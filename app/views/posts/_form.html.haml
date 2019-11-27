@@ -1,0 +1,29 @@
+.contents.row
+  .container
+    = form_for(post) do |f|
+      %h3
+        投稿する
+      %h4
+        サムネ
+      = f.file_field :image,multiple: true,placeholder: "Image Url"
+      = f.text_area :text,multiple: true,cols: "30",placeholder: "text",rows: "3"
+      %h4
+        起
+      = f.file_field :image,multiple: true,placeholder: "Image Url"
+      = f.text_area :text,multiple: true,cols: "30",placeholder: "text",rows: "3"
+      %h4
+        承
+      = f.file_field :image,multiple: true,placeholder: "Image Url"
+      = f.text_area :text,multiple: true,cols: "30",placeholder: "text",rows: "3"
+      %h4
+        転
+      = f.file_field :image,multiple: true,placeholder: "Image Url"
+      = f.text_area :text,multiple: true,cols: "30",placeholder: "text",rows: "3"
+      %h4
+        決
+      = f.file_field :image,multiple: true,placeholder: "Image Url"
+      = f.text_area :text,multiple: true,cols: "30",placeholder: "text",rows: "3"
+      %h4
+        continued
+      = f.text_field :link,placeholder: "continued"
+      = f.submit "SENT"

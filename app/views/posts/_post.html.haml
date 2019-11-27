@@ -1,0 +1,26 @@
+.slick-box
+  .title-post.content_post{style:"background-image: url(#{post.image[0]});"}
+    = simple_format(post.text[0])
+  .first-post.content_post{style:"background-image: url(#{post.image[1]});"}
+    = simple_format(post.text[1])
+  .second-post.content_post{style:"background-image: url(#{post.image[2]});"}
+    = simple_format(post.text[2])
+  .third-post.content_post{style:"background-image: url(#{post.image[3]});"}
+    = simple_format(post.text[3])
+  .fourth-post.content_post{style:"background-image: url(#{post.image[4]});"}
+    = simple_format(post.text[4])
+  .last-post.content_post{style:"background-image: url(#{post.image[4]});"}
+    = simple_format(post.text[4])
+    .continued
+      = link_to "#{post.link}",target: :_blank do 
+        = image_tag src="continued.png"
+    .more
+      %span= image_tag 'arrow_top.png'
+      %ul.more_list
+        %li
+          = link_to '詳細', "/tweets/#{post.id}", method: :get
+        - if user_signed_in? && current_user.id == post.user_id
+          %li
+            = link_to '編集', "/tweets/#{post.id}/edit", method: :get
+          %li
+            = link_to '削除', "/tweets/#{post.id}", method: :delete
