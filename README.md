@@ -7,36 +7,17 @@ twitter等でよく見る例のアレを画像とテキストで自作して投�
 
  
 # Features
- 
-"hoge"のセールスポイントや差別化などを説明する
- 
+
+インスタやツイッターを見ていて、画像とテキストを絡めて複数同時って投稿できないよなって思いつつ、
+当時自分の１０年間を箇条書きするハッシュタグでが流行ってたので、to be continuedのgifと合わせて見たら面白そうと思い作成しました。
+
+
 # Usage
- 
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
+
 ```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
+git clone https://github.com/hoshi4444/continued.git
+cd continued
 ```
  
-# Note
- 
-注意点などがあれば書く
- 
 # Author
- 
-作成情報を列挙する
- 
-* 作成者
-* 所属
-* E-mail
- 
-# License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
- 
-社内向けなら社外秘であることを明示してる
- 
-"hoge" is Confidential.
+[hoshi4444](https://github.com/hoshi4444)
