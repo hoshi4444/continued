@@ -3,7 +3,7 @@ twitter等でよく見る例のアレを画像とテキストで自作して投�
  
 # DEMO
  
-![demo](https://gyazo.com/f732f89c5704ee32e0af87d2e2b90609)
+[![Image from Gyazo](https://i.gyazo.com/f732f89c5704ee32e0af87d2e2b90609.gif)](https://gyazo.com/f732f89c5704ee32e0af87d2e2b90609)
 
  
 # Features
