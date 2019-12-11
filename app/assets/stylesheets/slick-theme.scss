@@ -105,60 +105,22 @@ $slick-opacity-not-active: 0.25 !default;
     }
 }
 
-// .slick-prev {
-//     left: -25px;
-//     [dir="rtl"] & {
-//         left: auto;
-//         right: -25px;
-//     }
-//     &:before {
-//         content: $slick-prev-character;
-//         [dir="rtl"] & {
-//             content: $slick-next-character;
-//         }
-//     }
-// }
-
-// .slick-next {
-//     right: -25px;
-//     [dir="rtl"] & {
-//         left: -25px;
-//         right: auto;
-//     }
-//     &:before {
-//         content: $slick-next-character;
-//         [dir="rtl"] & {
-//             content: $slick-prev-character;
-//         }
-//     }
-// }
-
 .slick-prev {
     height: 100%;
     width: 5%;
-    left: 0;  /*幅を画像の50%にして左寄せ*/
+    left: 0;  
     z-index:1;
   &:hover{
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent);
   }
-//  &:before {
-//       position: absolute;
-//       left: 8px; /*何もしないと要素の中央になってしまうので位置調整*/
-//       content: '◀︎';
-//   }
 }
 .slick-next {
     height: 100%;
     width: 50%;
-    right: 0;  /*幅を画像の50%にして右寄せ*/
+    right: 0;  
   &:hover{
-    background: linear-gradient(to left, rgba(255, 255, 255, 0.5), transparent);
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.1), transparent);
   }
-//   &:before {
-//       position: absolute;
-//       right: 8px; /*何もしないと要素の中央になってしまうので位置調整*/
-//       content: '▶︎';
-//   }
 }
 
 

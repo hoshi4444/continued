@@ -14,7 +14,15 @@
     .continued
       = link_to "#{post.link}",target: :_blank do 
         = image_tag src="continued.png"
-    .more
+    .edit-user
+      .edit-user-box
+        .edit-user__title
+          %h4 この投稿を作った人
+        .edit-user__icon
+          =image_tag src="https://static.mercdn.net/images/member_photo_noimage_thumb.png"
+        .edit-user__name
+          user name
+    -# .more
       %span= image_tag 'arrow_top.png'
       %ul.more_list
         %li
