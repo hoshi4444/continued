@@ -1,7 +1,4 @@
-.contents.row
-  %p
-    = @name
-    さんの投稿一覧
+#masonry.contents
   - @posts.each do |post|
-    = render partial: "post/post", locals: { post: post }
-  = paginate(@posts)
+    = render partial: "posts/post", locals: { post: post }
+  

@@ -470,6 +470,7 @@ ul li {
 .row {
   width: 100%;
   margin:0 auto;
+  height: 100vh;
   max-width: 800px;
   *zoom: 1;
 }

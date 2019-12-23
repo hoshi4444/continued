@@ -1,0 +1,22 @@
+%header.header.torn
+  %ul.nav
+    %li.nav-box.nav-head
+      .nav__title.nav__title-stop.switch
+        %button.nav__title-cover
+          =image_tag src="continued.png",class:"nav__title-image",alt:"トップ画像"
+    %li.nav-box.nav__menu
+      %ul.nav__menu-list
+        - if user_signed_in?
+          %li.nav__name
+            = link_to current_user.name ,user_path(current_user.id)
+          %ul.nav__user
+            %li.nav__logout
+              = link_to "Log out", destroy_user_session_path,method: :delete
+            %li.nav__post
+              = link_to "continue", new_post_path
+        - else
+          %ul.nav__user
+            %li.nav__login
+              = link_to "Log in", new_user_session_path
+            %li.nav__new
+              = link_to "Sign in", new_user_registration_path

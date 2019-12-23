@@ -9,11 +9,23 @@ $lightGray: #f5f5f3;
 $white: white;
 
 @font-face {
-  font-family: 'Dakota';
-  src: font-url('Dakota.ttf') format('truetype');
+  font-family: 'Eraser';
+  src: font-url('Eraser.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+
+$breakpoints: (
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1068px)',
+) !default;
+
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
 
 //mixin
 
@@ -28,16 +40,30 @@ $white: white;
   margin: $margin;
 }
 
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+ }
+ 
+ @mixin mq-d($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+ }
+
 body,html {
-  height: 100%;
-  background-color: $lightGray;
+  background-image: url(white_paper.jpg);
+  background-size:cover;
 }
 
 h1,h2,h3,h4,h5,h6,body {
 line-height: 1.57;
   letter-spacing: 0.15em;
   font-size: 16px;
-  font-family: 'Unica One', "Dakota", "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  // font-family: 'Unica One', "Dakota", "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
+  font-weight: normal;
+  font-family: "Eraser";
   margin: 0;
 }
 
@@ -112,139 +138,156 @@ a {
   }
 }
 
-
-.title {
-  font-weight: bold;
-}
-
-.title--big {
-  font-size: 1.5em;
-  font-weight: bold;
-  i {
-    font-style: italic;
-    font-size: 1.8em;
-  }
-}
-
-
 .header {
-  @include basePadding;
-  border-bottom: 3px solid $accent;
-  background-color: #fff;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  bottom: 0;
+  right:0;
   z-index: 5;
-  &__bar {
-   position: relative;
-   h1.grid-6 {
-    font-size: 20px;
-    line-height: 41px;
-    float: left;
-    font-family: "Dakota";
-    a {
-      display: block;
-    }
-   }
-   .grid-6 {
-     float: right;
-     text-align: right;
-     a.post {
-       @extend .btn;
-       width: 120px;
-       display: inline-left;
-       margin-left: 10px;
-     }
-    }
-   .titleimage{
-     height:60px;
-   }
-   }
-  
+  width: 100%;
+  height: 40%;
+  transition:opacity 1s cubic-bezier(0.38, 0.85, 0.44,-0.01) 1s,bottom 2s;
+  background-image: url(torn_paper.png);
+  background-size: cover;
+  opacity: 1;
+  @include mq-d(){
+    height: 0;
+  }
 
-  .user_nav {
-    position: relative;
-    height: 100px;
-    position: absolute;
-    right: 0;
-    top: 10px;
-    span {
-      top: 5px;
-      display: block;
-      float: left;
-      margin-left: 30px;
-      width: 150px;
-      height: 50px;
-      font-size: 1em;
-      cursor: pointer;
-      position: relative;
-      &:after {
-        content: '▼';
-        font-size: .7em;
-        margin-left: -4px;
-      }
-      &:hover ul {
-        color: $accent;
-        display: block;
-      }
+  .nav {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    &-box{
+      width:100%;
+      height: 100%;
     }
-    ul {
-      display: none;
-      position: absolute;
-      top: 46px;
-      right: 0;
-      border-left: 1px solid #d8d8d8;
-      border-right: 1px solid #d8d8d8;
-      box-shadow: 1px 2px 5px rgba(0,0,0,0.1);
-      li {
-        background-color: #f0f0f0;
-        a {
-          display: block;
-          padding: 10px 20px;
-          text-align: left;
-          border-bottom: 1px solid #d8d8d8;
+    &__title{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      transition:left 2s cubic-bezier(0.38, 0.85, 0.44,-0.01) 0.5s;
+      &:hover{
+        transform: scale(1.1);
+      }
+      @include mq-d(){
+        
+      }
+      &-cover{
+        width: auto;
+        padding:0;
+        margin:0;
+        background:none;
+        border:0;
+        font-size:0;
+        line-height:0;
+         overflow:visible;
+        &:focus{
+          outline: none;
         }
       }
-     }
+      &-image{
+        width: 450px;
+        height: 350px;
+        @include mq-d(){
+          width: 250px;
+          height: 150px;
+        }
+      }
+      &-stop{
+        right:0;
+        left: 90%;
+      }
+      &-start{
+        left:-400px;
+        transition:left 1s cubic-bezier(0.38, 0.85, 0.44,-0.01);
+        @include mq-d(){
+          left:-212px;
+        }
+      }
+    }
+    &__menu{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 35px;
+      font-size:4vw;
+      @include mq-d(){
+        align-items: inherit;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70px;
+      }
+      &-list{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction:column;
+        justify-content: space-around;
+        & li{
+          
+          @include mq-d(){
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+          }
+        }
+      }
+    }
+    &__user{
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+      @include mq-d(){
+        width:auto;
+        flex-direction: column;
+      }
+      li{
+        margin:10px;
+      }
+    }
+    &__name{
+      font-size: 3vw;
+      display: flex;
+      width: 100%;
+      justify-content: flex-end;
+    }
   }
 }
-.form {
-  background: url(https://dl.dropboxusercontent.com/u/5840617/DeathtoStock_Wired3.jpg);
-  background-size: cover;
-  .contents {
-    position: absolute;
-    left: 0;
-    top: 30%;
-    bottom: 0;
-    right: 0;
-  }
-  footer {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-  }
+
+
+
+.torn{
+  bottom:-1000px;
+  right:-1000px;
+  opacity:0.1;
 }
+
+
+.close{
+  bottom: -60%;
+  transition:bottom 2s;
+}
+
 .mein {
   width: 100%;
   height: 100%;
-  padding:30px 0;
-  h2 {
-    @include boxBase(20px 0, 0);
-    font-weight: normal;
-    strong {
-      font-weight: bold;
-      padding-right: 5px;
-      font-size: 1.2em;
-    }
-  }
+  padding:30px;
   .contents{
     margin:0 auto;
+    text-align: center;
+    h2 {
+      font-size: 100px;
+      font-weight: nomal;
+    }
+    .top-exp {
+      margin:0;
+      padding-bottom: 30px;
+    }
+    h3{
+      font-size:30px;
+    }
   }
-  .new_user{
-  font-family: "游ゴシック", "YuGothic";
-  }
+
   .content_post {
     @include boxBase(20px 0 ,30px);
     position: relative;
@@ -468,23 +511,19 @@ a {
     }
   }
 }
+
 form {
-  h3 {
-    @include baseMargin(0 0 20px);
-    text-align: center;
-    font-weight: normal;
-    font-size: 20px;
-    color: $dark;
-  }
+
   input,textarea {
     width: 100%;
     @include boxBase(5px 0 15px,10px);
     border: 1px solid $gray;
     border-radius: 5px;
-    font-family: "游ゴシック", "YuGothic";
+    font-family: none;
   }
   input[type="submit"] {
     @extend .transition;
+    font-family: Eraser;
     background-color: $accent;
     border-radius: 20px;
     color: #fff;
@@ -571,73 +610,98 @@ footer {
   // overflow: hidden;
   text-align: center;
   margin-bottom: 10px;
+  position: relative;
+  p {
+    margin: 0;
+    padding: 0;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+  
   &:hover{
     .thumbnail{
       opacity:1;
-      filter: blur(1px) drop-shadow(5px 5px 5px #333);
-      transform: scale(1.3);
+      filter: blur(1px) drop-shadow(0px 0px 5px #f5f5f5);
+      transform: scale(1.2);
       z-index: 1;
       position: relative;
       border:1px solid transparent;
     }
-    
-    // &:before{
-    //   content: '';
-    //   position: absolute;
-    //   top: -6px;
-    //   bottom: -6px;
-    //   left: -6px;
-    //   right: -6px;
-    //   background: inherit;
-    //   filter: blur(3px);
-    // }
+    .balloon-left{
+      display:block !important;
+    }
   }
-  // &:before{
-  //   content: '';
-  //   position: absolute;
-  //   top: -15px;
-  //   bottom: -15px;
-  //   left: -15px;
-  //   right: -15px;
-  //   background: inherit;
-  //   filter: blur(5px);
-  //   transition:all 0.5s ease;
-  // }
-  
 }
 
 .thumb-box{
   width:250px;
 }
 
-.cover{
-  background-color:white;
+.thumbnail{
+  filter: blur(5px);
+  transition:all 0.1s ease;
+  opacity: 0.7;
+  &:first-child{
+
+  }
 }
 
-.stamp{
-  width: 500px;
-  height: 350px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  cursor: pointer;
-  transition-duration: 1.5s;
-  z-index:5;
-  transform: translateX(-10000px);
-  &:hover{
-    transform: scale(1.1) rotate(9deg);
+.balloon-left {
+  position: absolute;
+  padding: 15px 10px;
+  min-height: 10%;
+  color: #555;
+  font-size: 16px;
+  background: #fff;
+  border-radius: 15px;
+  top:1.5em;
+  left:-4.5em;
+  z-index: 1;
+  display:none;
+  @include mq-d(){
+    display:block;
   }
+}
+
+.balloon-left:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border: 8px solid transparent;
+  border-left: 10px solid #fff;
+}
+
+.balloon-rigth {
+  position: absolute;
+  padding: 15px 10px;
+  min-height: 10%;
+  color: #555;
+  font-size: 16px;
+  background: #fff;
+  border-radius: 15px;
+  top:1.5em;
+  right:-4.5em;
+  z-index: 1;
+  display:none;
   
 }
 
-.stop{
-  transform: translateX(0)
-
+.balloon-rigth:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border: 8px solid transparent;
+  border-right: 10px solid #fff;
 }
 
-.thumbnail{
-  filter: blur(5px);
-  transition:all 0.5s ease;
-  opacity: 0.7;
+.efect {
+  display:none;
+  position: absolute;
+  z-index: 1;
+  top:50%;
+  left:50%;
 }
-

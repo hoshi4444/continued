@@ -1,8 +1,17 @@
 .thumb-box
   .thumb{data: {target: "thumb#{post.id}"}}
-    -# = simple_format(post.text[0])
-    =image_tag src="#{post.image[0]}",class:"thumbnail"
-%section{id:"thumb#{post.id}",class:"modalArea"}
+    =image_tag src="#{post.image[0]}",class:"thumbnail" 
+    .balloon-left.js-marker
+      = simple_format(post.text[0])
+    .balloon-rigth.js-marker
+      = simple_format(post.text[0])
+    =image_tag src="don.png",class:"efect js-don"
+    =image_tag src="gogogo.png",class:"efect js-gogogo"
+    =image_tag src="zawazawa.gif",class:"efect js-boss"
+    =image_tag src="gogo.png",class:"efect js-gogogo"
+    =image_tag src="ban.png",class:"efect js-gogogo"
+    =image_tag src="dogaga.png",class:"efect js-gogogo"
+.modalArea{id:"thumb#{post.id}"}
   #modalBg.modalBg
   .modalWrapper
     .modalContents
@@ -29,7 +38,7 @@
               .edit-user__icon
                 =image_tag src="https://static.mercdn.net/images/member_photo_noimage_thumb.png"
               .edit-user__name
-                user name
+                #{post.user.name}
           -# .more
           %span= image_tag 'arrow_top.png'
           %ul.more_list
