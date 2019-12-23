@@ -26,7 +26,7 @@ $(function(){
     var marker = $('.js-don');
     var interval = 5000; //発生間隔
     var rate = 10; //発生確率
-    var timeout = 2000; //消えるまでの時間
+    var timeout = 3000; //消えるまでの時間
     setInterval(function(){randomMarker(marker, rate, timeout)}, interval);
 });
 
@@ -34,7 +34,7 @@ $(function(){
   var marker = $('.js-gogogo');
   var interval = 7000; //発生間隔
   var rate = 10; //発生確率
-  var timeout = 2000; //消えるまでの時間
+  var timeout = 1000; //消えるまでの時間
   setInterval(function(){randomMarker(marker, rate, timeout)}, interval);
 });
 
@@ -42,7 +42,7 @@ $(function(){
   var marker = $('.js-ban');
   var interval = 6000; //発生間隔
   var rate = 15; //発生確率
-  var timeout = 2000; //消えるまでの時間
+  var timeout = 4000; //消えるまでの時間
   setInterval(function(){randomMarker(marker, rate, timeout)}, interval);
 });
 
@@ -50,7 +50,7 @@ $(function(){
 var marker = $('.js-gogo');
 var interval = 8000; //発生間隔
 var rate = 15; //発生確率
-var timeout = 2000; //消えるまでの時間
+var timeout = 6000; //消えるまでの時間
 setInterval(function(){randomMarker(marker, rate, timeout)}, interval);
 });
 
