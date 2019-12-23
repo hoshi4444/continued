@@ -83,7 +83,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  
   <<: *default
   database: continued_production
   username: continued
   password: <%= ENV['CONTINUED_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
