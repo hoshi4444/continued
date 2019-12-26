@@ -168,6 +168,7 @@ a {
       transition:left 2s cubic-bezier(0.38, 0.85, 0.44,-0.01) 0.5s;
       &:hover{
         transform: scale(1.1);
+        filter: drop-shadow(0px 0px 5px #f5f5f5);
       }
       @include mq-d(){
         
@@ -438,23 +439,23 @@ a {
     p{
       filter: saturate(150%) contrast(0.5) sepia(100%);
     } 
-    &:focus{
-      .edit-user{
-        transform:translateY(0);
-        transition:all 1s ease-in-out;
-        opacity:1;
-      }
-      &:before{
-        content: '';
-        position: absolute;
-        top: -5px;
-        bottom: -5px;
-        left: -5px;
-        right: -5px;
-        background: inherit;
-        filter: saturate(150%) contrast(0.5) sepia(100%) blur(1.5px) brightness(35%);
-       }
-     }
+    // &:focus{
+    //   .edit-user{
+    //     transform:translateY(0);
+    //     transition:all 1s ease-in-out;
+    //     opacity:1;
+    //   }
+    //   &:before{
+    //     content: '';
+    //     position: absolute;
+    //     top: -5px;
+    //     bottom: -5px;
+    //     left: -5px;
+    //     right: -5px;
+    //     background: inherit;
+    //     filter: saturate(150%) contrast(0.5) sepia(100%) blur(1.5px) brightness(35%);
+    //    }
+    //  }
    &:before{
     content: '';
     position: absolute;
@@ -468,11 +469,6 @@ a {
   }
 
   .edit-user{
-    position: absolute;
-    top: 0;
-    right: 200px;
-    left: 200px;
-    bottom: 0;
     text-align: center;
     color: antiquewhite;
     opacity:0;
@@ -482,20 +478,76 @@ a {
       margin:0 auto;
     }
     &__title{
-      padding-top: 70px;
-      padding-bottom: 20px;
+      padding-top: 30px;
+      padding-bottom: 10px;
+      font-size: 20px;     
       h4 {
         font-size: 25px;
+      }
+      @include mq-d(){
+        h4{
+          
+        }
       }
     }
     &__icon{
       img{
         margin:0 auto;
         border-radius: 50%;
+        width:120px;
+      }
+      &:hover{
+        filter: drop-shadow(0px 0px 5px #f5f5f5); 
       }
     }
-    &__name{
-      padding: 10px;
+    &__share{
+
+      .share-button{
+        margin: 16px 0 0;
+        text-align: center;
+        font-size: 0;
+        i{
+          width: 44px;
+          height: 44px;
+          border-radius: 4px;
+          line-height: 44px;
+        }
+        .fb-button{
+          color: #fff;
+          background: #385185;
+          font-size: 26px;
+          &:hover{
+            filter: drop-shadow(0px 0px 5px  #385185); 
+          }
+        }
+        .twi-button{
+          color: #fff;
+          background: #5d9dc9;
+          font-size: 24px;
+          &:hover{
+            filter: drop-shadow(0px 0px 5px #5d9dc9); 
+          }
+        }
+        .line-button{
+          color: #fff;
+          background: #00c137;
+          font-size: 22px;
+          &:hover{
+            filter: drop-shadow(0px 0px 5px #00c137); 
+          }
+        }
+        li{
+          display: inline-block;
+          margin: 0 8px 8px 0;
+          vertical-align: middle;
+          text-align: center;
+          a{
+            display: block;
+          }
+        }
+      }
+
+      
     }
   }
 
@@ -533,6 +585,9 @@ form {
       background-color: lighten($accent, 10%);
     }
   }
+  input[type="checkbox"] {
+    width:auto;
+  }
 }
 .container {
   @include boxBase(20px 0 ,30px);
@@ -568,6 +623,21 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.modalS{
+  display: none;
+  position: fixed;
+  z-index: 2; /*サイトによってここの数値は調整 */
+  top: 0;
+  right: 0;
+  width: 800px;
+  height: 100%;
+  .edit-user{
+    transform:translateY(0);
+    transition:all 1s ease-in-out;
+    opacity:1;
+  }
 }
 
 .modalBg {
@@ -685,6 +755,9 @@ footer {
   right:-4.5em;
   z-index: 1;
   display:none;
+  @include mq-d(){
+    opacity:0;
+  }
   
 }
 

@@ -1,53 +1,69 @@
-.thumb-box
-  .thumb{data: {target: "thumb#{post.id}"}}
-    =image_tag src="#{post.image[0]}",class:"thumbnail" 
-    .balloon-left.js-marker
-      = simple_format(post.text[0])
-    .balloon-rigth.js-marker
-      = simple_format(post.text[0])
-    =image_tag src="don.png",class:"efect js-don"
-    =image_tag src="gogogo.png",class:"efect js-gogogo"
-    =image_tag src="zawazawa.gif",class:"efect js-boss"
-    =image_tag src="gogo.png",class:"efect js-gogogo"
-    =image_tag src="ban.png",class:"efect js-gogogo"
-    =image_tag src="dogaga.png",class:"efect js-gogogo"
-.modalArea{id:"thumb#{post.id}"}
-  #modalBg.modalBg
-  .modalWrapper
-    .modalContents
-      .slick-box
-        .title-post.content_post{style:"background-image: url(#{post.image[0]});"}
-          = simple_format(post.text[0])
-        .first-post.content_post{style:"background-image: url(#{post.image[1]});"}
-          = simple_format(post.text[1])
-        .second-post.content_post{style:"background-image: url(#{post.image[2]});"}
-          = simple_format(post.text[2])
-        .third-post.content_post{style:"background-image: url(#{post.image[3]});"}
-          = simple_format(post.text[3])
-        .fourth-post.content_post{style:"background-image: url(#{post.image[4]});"}
-          = simple_format(post.text[4])
-        .last-post.content_post{style:"background-image: url(#{post.image[4]});"}
-          = simple_format(post.text[4])
-          .continued
-            = link_to "#{post.link}",target: :_blank do 
-              = image_tag src="continued.png"
+-# .thumb-box
+-#   .thumb{data: {target: "thumb#{post.id}"}}
+-#     =image_tag src="#{post.image[0]}",class:"thumbnail",alt:"サムネイル",loding:"lazy"
+-#     .balloon-left.js-marker
+-#       = simple_format(post.text[0])
+-#     .balloon-rigth.js-marker
+-#       = simple_format(post.text[0])
+-#     =image_tag src="don.png",class:"efect js-don",alt:"効果音",loding:"lazy"
+-#     =image_tag src="gogogo.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
+-#     =image_tag src="zawazawa.gif",class:"efect js-boss",alt:"効果音",loding:"lazy"
+-#     =image_tag src="gogo.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
+-#     =image_tag src="ban.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
+-#     =image_tag src="dogaga.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
+-# .modalArea{id:"thumb#{post.id}"}
+-#   #modalBg.modalBg
+-#   .modalWrapper
+-#     .modalContents
+.slick-box
+  .title-post.content_post{style:"background-image: url(#{post.image[0]});",loding:"lazy",alt:"投稿画像"}
+    = simple_format(post.text[0])
+  .first-post.content_post{style:"background-image: url(#{post.image[1]});",loding:"lazy",alt:"投稿画像"}
+    = simple_format(post.text[1])
+  .second-post.content_post{style:"background-image: url(#{post.image[2]});",loding:"lazy",alt:"投稿画像"}
+    = simple_format(post.text[2])
+  .third-post.content_post{style:"background-image: url(#{post.image[3]});",loding:"lazy",alt:"投稿画像"}
+    = simple_format(post.text[3])
+  .fourth-post.content_post{style:"background-image: url(#{post.image[4]});",loding:"lazy",alt:"投稿画像"}
+    = simple_format(post.text[4])
+  .last-post.content_post{style:"background-image: url(#{post.image[4]});",loding:"lazy",alt:"投稿画像"}
+    = simple_format(post.text[4])
+    .more{data: {target: "edit-user#{post.id}"}}
+      %span= image_tag 'arrow_top.png'
+      %ul.more_list
+        %li
+          = link_to '詳細', "/posts/#{post.id}", method: :get
+        - if user_signed_in? && current_user.id == post.user_id
+          %li
+            = link_to '編集', "/posts/#{post.id}/edit", method: :get
+          %li
+            = link_to '削除', "/posts/#{post.id}", method: :delete
+    .continued
+      = link_to "#{post.link}",target: :_blank do 
+        = image_tag src="continued.png"
+    .modalS{id:"edit-user#{post.id}"}
+      #modalBgS.modalBg
+      .modalWrapper
+        .modalContents
           .edit-user
             .edit-user-box
               .edit-user__title
-                %h4 この投稿を作った人
+                #{post.user.name}先生の次回作にご期待ください
               .edit-user__icon
-                =image_tag src="https://static.mercdn.net/images/member_photo_noimage_thumb.png"
-              .edit-user__name
-                #{post.user.name}
-          -# .more
-          %span= image_tag 'arrow_top.png'
-          %ul.more_list
-            %li
-              = link_to '詳細', "/tweets/#{post.id}", method: :get
-            - if user_signed_in? && current_user.id == post.user_id
-              %li
-                = link_to '編集', "/tweets/#{post.id}/edit", method: :get
-              %li
-                = link_to '削除', "/tweets/#{post.id}", method: :delete
-    #closeModal.closeModal
-      &#10005;
+                =image_tag src="menber.png",alt:"ユーザーアイコン"
+              .edit-user__share
+                %ul.share-button
+                  %li
+                    =link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=タイトル",class:"share-button-box",target:'_blank' do
+                      %i.fab.fa-facebook.fb-button
+                  %li
+                    =link_to "https://twitter.com/share?url=#{request.url}&text=タイトル",class:"share-button-box",target:'_blank' do
+                      %i.fab.fa-twitter.twi-button
+                  %li
+                    =link_to "http://line.me/R/msg/text/?#{request.url}&text=タイトル",class:"share-button-box",target:'_blank' do
+                      %i.fab.fa-line.line-button
+      #closeModalS.closeModal
+        &#10005;
+-# <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}&text=タイトル", title: 'Twitter', target: '_blank' %>
+-# <%= link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=タイトル", title: 'Facebook', target: '_blank' %>
+-# <%= link_to 'LINE', "http://line.me/R/msg/text/?#{request.url}&text=タイトル", title: 'LINE', target: '_blank' %>

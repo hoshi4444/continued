@@ -3,7 +3,7 @@
     %li.nav-box.nav-head
       .nav__title.nav__title-stop.switch
         %button.nav__title-cover
-          =image_tag src="continued.png",class:"nav__title-image",alt:"トップ画像"
+          =image_tag src="continued.png",class:"nav__title-image",alt:"トップ画像",loding:"lazy"
     %li.nav-box.nav__menu
       %ul.nav__menu-list
         - if user_signed_in?

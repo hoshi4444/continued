@@ -2,15 +2,15 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Continued...
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    %title Continued
+    = stylesheet_link_tag 'application', media: 'all','data-turbolinks-track':true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"}
+    %link{href:"https://use.fontawesome.com/releases/v5.6.1/css/all.css",rel:"stylesheet"}
   %body
-    .mein
-      = yield
+    = yield
     =javascript_include_tag "slick.min.js"
     =javascript_include_tag "masonry.pkgd.min.js"
     =javascript_include_tag "imagesloaded.pkgd.min.js"
