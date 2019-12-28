@@ -1,5 +1,9 @@
 =render "layouts/header"
-.mein
+.mein.jscroll
+  =image_tag src="don.png",class:"efect don js-don",alt:"効果音",loding:"lazy"
+  =image_tag src="gogogo.png",class:"efect gogogo js-gogogo",alt:"効果音",loding:"lazy"
+  =image_tag src="zawazawa.gif",class:"efect zawazawa js-boss",alt:"効果音",loding:"lazy"
+  =image_tag src="dogaga.png",class:"efect dogaga js-dogaga",alt:"効果音",loding:"lazy"
   #masonry.contents
     - @posts.each do |post|
       .thumb-box
@@ -9,11 +13,6 @@
             = simple_format(post.text[0])
           .balloon-rigth.js-marker
             = simple_format(post.text[0])
-          =image_tag src="don.png",class:"efect js-don",alt:"効果音",loding:"lazy"
-          =image_tag src="gogogo.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
-          =image_tag src="zawazawa.gif",class:"efect js-boss",alt:"効果音",loding:"lazy"
-          =image_tag src="ban.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
-          =image_tag src="dogaga.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
       .modalArea{id:"thumb#{post.id}"}
         #modalBg.modalBg
         .modalWrapper
@@ -21,3 +20,4 @@
             = render partial: "post", locals: { post: post }
       #closeModal.closeModal
         &#10005;
+  = paginate @posts

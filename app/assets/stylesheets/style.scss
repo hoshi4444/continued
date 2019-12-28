@@ -773,8 +773,29 @@ footer {
 
 .efect {
   display:none;
-  position: absolute;
   z-index: 1;
-  top:50%;
-  left:50%;
+  width: 30%;
+  @include mq-d(){
+    width:50%;
+  }
+}
+
+.don{
+  position: fixed;
+  left: 25%;
+  bottom: 0;
+}
+.dogaga{
+  position: fixed;
+  top: 0;
+}
+.gogogo{
+  position: fixed;
+  top: 0;
+  left: 55%;
+}
+.zawazawa{
+  position: fixed;
+  opacity: 0.5;
+  width: 100%;
 }

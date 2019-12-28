@@ -47,14 +47,6 @@ $(function(){
 });
 
 $(function(){
-var marker = $('.js-gogo');
-var interval = 8000; //発生間隔
-var rate = 20; //発生確率
-var timeout = 6000; //消えるまでの時間
-setInterval(function(){randomMarker(marker, rate, timeout)}, interval);
-});
-
-$(function(){
 var marker = $('.js-dogaga');
 var interval = 7000; //発生間隔
 var rate = 25; //発生確率
