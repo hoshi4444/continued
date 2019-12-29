@@ -49,8 +49,12 @@
             .edit-user-box
               .edit-user__title
                 #{post.user.name}先生の次回作にご期待ください
-              .edit-user__icon
-                =image_tag src="menber.png",alt:"ユーザーアイコン"
+              = link_to post.user do  
+                .edit-user__icon
+                  - if post.user.avatar?
+                    = image_tag post.user.avatar.to_s,alt:"ユーザーアイコン"
+                  - else
+                    = image_tag 'menber.png',alt:"ユーザーアイコン"
               .edit-user__share
                 %ul.share-button
                   %li

@@ -21,3 +21,8 @@
       #closeModal.closeModal
         &#10005;
   = paginate @posts
+  .page-load-status
+    -# %p.infinite-scroll-request Loading...
+    =image_tag src="zawazawa.gif",class:"infinite-scroll-request",alt:"効果音",loding:"lazy"
+    %p.infinite-scroll-last End of content
+    %p.infinite-scroll-error No more pages to load

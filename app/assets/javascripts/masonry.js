@@ -1,14 +1,5 @@
 $(document).on('turbolinks:load',function(){
-  // var container = $('#masonry'); 
-  
-  // container.imagesLoaded(function(){   
-  //   container.masonry({     
-  //     itemSelector: '.thumb-box',  
-  //     columnWidth: 255,    
-  //     fitWidth: true, 
-  //   });
-  // });
-
+ 
   var $container = $('#masonry').masonry({
     itemSelector:'none',
     columnWidth: 255,
@@ -31,6 +22,7 @@ $(document).on('turbolinks:load',function(){
   $container.infiniteScroll({
     path: 'nav.pagination a[rel=next]',
     append: '.thumb-box,.modalArea,closeModal',
+    status: '.page-load-status',
     // status: '.scroller-status',
     // hideNav: '.pagination',
     // navSelector  : '.next',    // 次ページへのリンクを内包する要素
@@ -38,10 +30,5 @@ $(document).on('turbolinks:load',function(){
     // itemSelector : '.thumb-box,.modalArea,closeModal',       // 次ページから読み込む要素
     outlayer: msnry,
 });
-// function( newElements ) {
-//     var newElems = $( newElements );
-//     newElems.imagesLoaded(function(){
-//           container.masonry( 'appended', newElems, true ); 
-//     });
-// });
+
 });
