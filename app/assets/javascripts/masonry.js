@@ -23,12 +23,16 @@ $(document).on('turbolinks:load',function(){
     path: 'nav.pagination a[rel=next]',
     append: '.thumb-box,.modalArea,closeModal',
     status: '.page-load-status',
+    checkLastPage: true,
     // status: '.scroller-status',
     // hideNav: '.pagination',
     // navSelector  : '.next',    // 次ページへのリンクを内包する要素
     // nextSelector : '.next a',  // 次ページへのリンク要素
     // itemSelector : '.thumb-box,.modalArea,closeModal',       // 次ページから読み込む要素
     outlayer: msnry,
+    
 });
+
+
 
 });

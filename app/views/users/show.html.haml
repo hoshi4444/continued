@@ -1,5 +1,30 @@
 =render "userheader"
-#masonry.contents
-  - @posts.each do |post|
-    = render partial: "posts/post", locals: { post: post }
-  
+.mein.jscroll
+  =image_tag src="don.png",class:"efect don js-don",alt:"効果音",loding:"lazy"
+  =image_tag src="gogogo.png",class:"efect gogogo js-gogogo",alt:"効果音",loding:"lazy"
+  =image_tag src="dogaga.png",class:"efect dogaga js-dogaga",alt:"効果音",loding:"lazy"
+  #masonry.contents
+    - @posts.each do |post|
+      .thumb-box
+        .thumb{data: {target: "thumb#{post.id}"}}
+          =image_tag src="#{post.image[0]}",class:"thumbnail",alt:"サムネイル",loding:"lazy"
+          .balloon-left.js-marker
+            = simple_format(post.text[0])
+          .balloon-rigth.js-marker
+            = simple_format(post.text[0])
+      .modalArea{id:"thumb#{post.id}"}
+        #modalBg.modalBg
+        .modalWrapper
+          .modalContents
+            = render partial: "posts/post", locals: { post: post }
+      #closeModal.closeModal
+        &#10005;
+  = paginate @posts
+  - if @posts.last_page?   
+    .page-load-status
+      %p.infinite-scroll-last ご応募お待ちしております！
+  - else
+    .page-load-status
+      .infinite-scroll-request
+      %p.infinite-scroll-last 完  〜おわり〜
+      %p.infinite-scroll-error 読み込めませんでした
