@@ -1,20 +1,3 @@
--# .thumb-box
--#   .thumb{data: {target: "thumb#{post.id}"}}
--#     =image_tag src="#{post.image[0]}",class:"thumbnail",alt:"サムネイル",loding:"lazy"
--#     .balloon-left.js-marker
--#       = simple_format(post.text[0])
--#     .balloon-rigth.js-marker
--#       = simple_format(post.text[0])
--#     =image_tag src="don.png",class:"efect js-don",alt:"効果音",loding:"lazy"
--#     =image_tag src="gogogo.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
--#     =image_tag src="zawazawa.gif",class:"efect js-boss",alt:"効果音",loding:"lazy"
--#     =image_tag src="gogo.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
--#     =image_tag src="ban.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
--#     =image_tag src="dogaga.png",class:"efect js-gogogo",alt:"効果音",loding:"lazy"
--# .modalArea{id:"thumb#{post.id}"}
--#   #modalBg.modalBg
--#   .modalWrapper
--#     .modalContents
 .slick-box
   .title-post.content_post{style:"background-image: url(#{post.image[0]});",loding:"lazy",alt:"投稿画像"}
     = simple_format(post.text[0])
@@ -29,8 +12,8 @@
   .last-post.content_post{style:"background-image: url(#{post.image[4]});",loding:"lazy",alt:"投稿画像"}
     = simple_format(post.text[4])
     .more{data: {target: "edit-user#{post.id}"}}
-      %span= image_tag 'arrow_top.png'
-      %ul.more_list
+      = image_tag 'more.png'
+      -# %ul.more_list
         %li
           = link_to '詳細', "/posts/#{post.id}", method: :get
         - if user_signed_in? && current_user.id == post.user_id
@@ -41,9 +24,13 @@
     .continued
       = link_to "#{post.link}",target: :_blank do 
         = image_tag src="continued.png"
+    -# #closeModalS.closeModalS
+    -#   &#10005;
     .modalS{id:"edit-user#{post.id}"}
       #modalBgS.modalBg
-      .modalWrapper
+      -# #closeModalS.closeModalS
+      -#   &#10005;
+      .modalWrapperS
         .modalContents
           .edit-user
             .edit-user-box
@@ -66,8 +53,7 @@
                   %li
                     =link_to "http://line.me/R/msg/text/?#{request.url}&text=タイトル",class:"share-button-box",target:'_blank' do
                       %i.fab.fa-line.line-button
-      #closeModalS.closeModal
-        &#10005;
--# <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}&text=タイトル", title: 'Twitter', target: '_blank' %>
--# <%= link_to 'Facebook', "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=タイトル", title: 'Facebook', target: '_blank' %>
--# <%= link_to 'LINE', "http://line.me/R/msg/text/?#{request.url}&text=タイトル", title: 'LINE', target: '_blank' %>
+      #closeModalS.closeModalS
+        = image_tag 'more.png'
+    -# #closeModalS.closeModalS
+    -#   &#10005;

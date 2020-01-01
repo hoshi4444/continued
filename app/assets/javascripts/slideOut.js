@@ -8,4 +8,8 @@ $(document).on('turbolinks:load',function(){
     $('header').toggleClass('close');
   });
 
+  // $('#more').click(function(){
+  //   $('#more').toggleClass('more');
+  // });
+
 });
