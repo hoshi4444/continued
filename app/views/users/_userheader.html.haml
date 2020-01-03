@@ -7,7 +7,10 @@
     %li.nav-box.nav__menu
       %ul.nav__menu-list
         %li.nav__name
-          #{@user.name}'s Continueds
+          - if @user.id == current_user.id
+            =link_to "#{@user.name}'s Continueds",edit_user_registration_path
+          - else
+            #{@user.name}'s Continueds
         %ul.nav__user
           %li.nav__home
             = link_to "back","/" 

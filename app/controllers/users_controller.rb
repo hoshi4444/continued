@@ -5,5 +5,6 @@ class UsersController < ApplicationController
     @posts = @user.posts.order("created_at DESC").page(params[:page]).per(15)
   end
 
-  
+
+
 end
