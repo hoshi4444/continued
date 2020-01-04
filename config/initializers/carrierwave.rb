@@ -11,6 +11,8 @@ module CarrierWave
 end
 
 CarrierWave.configure do |config|
+  config.storage = :fog
+  config.fog_provider = 'fog/aws'
   config.fog_credentials = {
     provider: 'AWS',
     aws_access_key_id: Rails.application.secrets.aws_access_key_id,
