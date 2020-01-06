@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:user).order('created_at DESC').page(params[:page]).per(15)
+    
   end
 
   def new
@@ -29,7 +30,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    # @comments = @post.comments.includes(:user)
+    @comments = @post.comments.includes(:user)
   end
 
   private

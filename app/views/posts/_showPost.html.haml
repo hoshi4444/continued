@@ -38,20 +38,6 @@
                     = image_tag post.user.avatar.to_s,alt:"ユーザーアイコン"
                   - else
                     = image_tag 'menber.png',alt:"ユーザーアイコン"
-              -# .edit-user__share
-                %ul.share-button
-                  %li
-                    =link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=【#{post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
-                      %i.fab.fa-facebook.fb-button
-                  %li
-                    =link_to "https://twitter.com/share?url=#{request.url}&text=【#{post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
-                      %i.fab.fa-twitter.twi-button
-                  %li
-                    =link_to "http://line.me/R/msg/text/?#{request.url}&text=【#{post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
-                      %i.fab.fa-line.line-button
-            .show-next
-              =link_to "感想を送る",post_path(post),class:"show-link"
       #closeModalS.closeModalS
         = image_tag 'more.png'
-    -# #closeModalS.closeModalS
-    -#   &#10005;
+    

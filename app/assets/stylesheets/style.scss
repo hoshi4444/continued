@@ -222,6 +222,7 @@ a {
           @include mq-d(){
             writing-mode: vertical-rl;
             text-orientation: upright;
+            width: fit-content;
           }
         }
       }
@@ -317,6 +318,10 @@ a {
       z-index: 2;
       font-weight: bold;
       text-shadow: 0 0 2px #000, 0 0 1px #000, 0 0 1px #000;
+      text-align: left;
+      @include mq-d(){
+        font-size:15px;
+      }
     }
     span.name {
       position: absolute;
@@ -426,11 +431,15 @@ a {
     color: antiquewhite;
     padding-bottom: 30px;
     &-box{
-      margin:0 auto;
+      // display: flex;
+      
     }
     &__title{
       padding-bottom: 10px;
-      font-size: 20px;     
+      font-size: 20px;  
+      @include mq-d(){
+        font-size:10px;
+      }   
       h4 {
         font-size: 25px;
       }
@@ -579,11 +588,15 @@ footer {
 .modalS{
   display: none;
   position: fixed;
-  z-index: 2; /*サイトによってここの数値は調整 */
+  z-index: 2; 
   top: 0;
   right: 0;
   width: 800px;
   height: 100%;
+  @include mq-d(){
+    width:430px;
+
+  }
   .edit-user{
     transform:translateY(0);
     transition:all 1s ease-in-out;
@@ -634,7 +647,7 @@ footer {
   position: absolute;
   cursor: pointer;
   top: 45px;
-  right: 35px;
+  right: 15px;
   width: 120px;
   &:hover{
     filter: drop-shadow(0px 0px 5px #f5f5f5);
@@ -700,6 +713,7 @@ footer {
   display:none;
   @include mq-d(){
     display:block;
+    left: -3.5rem;
   }
 }
 
@@ -790,7 +804,7 @@ footer {
   backface-visibility: hidden;
   cursor: pointer;
   top: 20px;
-  right: 30px;
+  right: 10px;
   z-index: 2;
   height: 100px;
   width: 120px;
@@ -847,4 +861,212 @@ footer {
 
 .hidden{
   display:none;
+}
+
+.notification {
+  .notice {
+    background-color: blue;
+    color: white;
+    text-align: center;
+    z-index:99;
+  }
+
+  .alert {
+    background-color: orange;
+    color: white;
+    text-align: center;
+  }
+}
+
+@keyframes short-press {
+  0% {
+    transform: scale(1);
+  }
+  
+  50% {
+    transform: scale(.9);
+  }
+  
+  100% {
+    transform: scale(1);
+  }
+}
+
+.submit-button {
+  display: block;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: .75em;
+  letter-spacing: 1px;
+  height: 38px;
+  width: 160px;
+  line-height: 38px;
+  overflow: hidden;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 15px 30px rgba(black,.1);
+  border: 2px solid black ;
+  cursor: pointer;
+  transition: all .3s ease;
+  margin:0 auto;
+  
+  &:hover,
+  &:focus {
+    box-shadow: 0 5px 15px rgba(black,.1);
+    outline-color: #666;
+  }
+  
+  &.animated {
+    animation: .75s short-press cubic-bezier(0.770, 0.000, 0.175, 1.000) forwards;
+  }
+  
+  > span {
+    display: block;
+    color: #444;
+    text-align: center;
+    max-height: 38px;
+    
+    &.pre-state-msg {
+      transition: all .7s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+      transition-delay: .75s;
+    }
+  }
+  
+  &.state-1 {
+    .pre-state-msg {
+      margin-top: -38px;
+    }
+  }
+  
+  &.state-2 {
+    .pre-state-msg {
+      margin-top: -76px;
+    }
+  }
+}
+
+.comments{
+  &-box{
+    width:50%;
+  }
+  &-title{
+
+  }
+  &-list{
+
+  }
+}
+
+.comment{
+  width:100%;
+  border: 1px solid black;
+  margin: 10px 10px 20px 10px;
+  @include mq-d(){
+    width: 100%;
+  }
+
+  &-form{
+    display: flex;
+    &-text{
+      margin:0 5px;
+      &:focus{
+        outline-color: #666;
+      }
+    }
+  }
+
+  &-count{
+    height:30px;
+    text-align: left;
+    padding: 5px;
+    background-color: rgba(50, 50, 50, 0.3);
+  }
+
+  &__list{
+    height: 370px;    
+    overflow: scroll;
+    &__user{
+      display:flex;
+      width:100%;
+      font-size: 1em;
+      margin: 0 10px;
+
+      &-image{
+        img{
+          margin: 0 auto;
+          border-radius: 50%;
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      &-name{
+
+      }
+      &-text{
+        max-width: 240px;
+
+      }
+    }
+
+  }
+
+  
+
+
+}
+
+.show-link{
+  text-align: center;
+  color: white;
+  &:hover{
+    opacity: 0.6;
+    color:white;
+  }
+}
+
+.show-title{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  @include mq-d(){
+    display: block
+  }
+  h2{
+    line-height: 100px;
+    @include mq-d(){
+     line-height: 30px;
+     font-size: 30px !important;
+    }
+  }
+  h3{
+    @include mq-d(){
+      font-size: 15px !important;
+    }
+  }
+}
+
+.show-box{
+  display:flex;
+  @include mq-d(){
+    display:block;
+  }
+
+  .show-slide{
+    width:800px;
+    @include mq-d(){
+      width: 100%;
+    }
+  }
+}
+
+.title-link{
+  padding:30px;
+  font-size: 3rem;
+}
+
+.show-row{
+  max-width: 1080px;
+  margin:0 auto;
 }

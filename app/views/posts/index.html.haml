@@ -5,13 +5,14 @@
   =image_tag src="dogaga.png",class:"efect dogaga js-dogaga",alt:"効果音",loding:"lazy"
   #masonry.contents
     - @posts.each do |post|
-      .thumb-box
-        .thumb{data: {target: "thumb#{post.id}"}}
-          =image_tag src="#{post.image[0]}",class:"thumbnail",alt:"サムネイル",loding:"lazy"
-          .balloon-left.js-marker
-            = simple_format(post.text[0])
-          .balloon-rigth.js-marker
-            = simple_format(post.text[0])
+      = link_to post_path(post),remote: true do
+        .thumb-box
+          .thumb{data: {target: "thumb#{post.id}"}}
+            =image_tag src="#{post.image[0]}",class:"thumbnail",alt:"サムネイル",loding:"lazy"
+            .balloon-left.js-marker
+              = simple_format(post.text[0])
+            .balloon-rigth.js-marker
+              = simple_format(post.text[0])
       .modalArea{id:"thumb#{post.id}"}
         #modalBg.modalBg
         .modalWrapper

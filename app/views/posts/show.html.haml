@@ -1,94 +1,30 @@
--# .modalArea{id:"thumb#{post.id}"}
--#   #modalBg.modalBg
--#   .modalWrapper
--#     .modalContents
--#       = render partial: "post", locals: { post: post }
--# #closeModal.closeModal
--#   &#10005;
-
-
-
-=render "layouts/header"
 .mein
-  .container.contents
-    = render partial: "post", locals: { post: @post }
--# .slick-box
--#   .title-post.content_post{style:"background-image: url(#{post.image[0]});",loding:"lazy",alt:"投稿画像"}
--#     = simple_format(post.text[0])
--#   .first-post.content_post{style:"background-image: url(#{post.image[1]});",loding:"lazy",alt:"投稿画像"}
--#     = simple_format(post.text[1])
--#   .second-post.content_post{style:"background-image: url(#{post.image[2]});",loding:"lazy",alt:"投稿画像"}
--#     = simple_format(post.text[2])
--#   .third-post.content_post{style:"background-image: url(#{post.image[3]});",loding:"lazy",alt:"投稿画像"}
--#     = simple_format(post.text[3])
--#   .fourth-post.content_post{style:"background-image: url(#{post.image[4]});",loding:"lazy",alt:"投稿画像"}
--#     = simple_format(post.text[4])
--#   .last-post.content_post{style:"background-image: url(#{post.image[4]});",loding:"lazy",alt:"投稿画像"}
--#     = simple_format(post.text[4])
--#     .more{data: {target: "edit-user#{post.id}"}}
--#       %span= image_tag 'arrow_top.png'
--#       %ul.more_list
--#         %li
--#           = link_to '詳細', "/posts/#{post.id}", method: :get
--#         - if user_signed_in? && current_user.id == post.user_id
--#           %li
--#             = link_to '編集', "/posts/#{post.id}/edit", method: :get
--#           %li
--#             = link_to '削除', "/posts/#{post.id}", method: :delete
--#     .continued
--#       = link_to "#{post.link}",target: :_blank do 
--#         = image_tag src="continued.png"
--#     .modalS{id:"edit-user#{post.id}"}
--#       #modalBgS.modalBg
--#       .modalWrapper
--#         .modalContents
--#           .edit-user
--#             .edit-user-box
--#               .edit-user__title
--#                 #{post.user.name}先生の次回作にご期待ください
--#               .edit-user__icon
--#                 =image_tag src="menber.png",alt:"ユーザーアイコン"
--#               .edit-user__share
--#                 %ul.share-button
--#                   %li
--#                     =link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=タイトル",class:"share-button-box",target:'_blank' do
--#                       %i.fab.fa-facebook.fb-button
--#                   %li
--#                     =link_to "https://twitter.com/share?url=#{request.url}&text=タイトル",class:"share-button-box",target:'_blank' do
--#                       %i.fab.fa-twitter.twi-button
--#                   %li
--#                     =link_to "http://line.me/R/msg/text/?#{request.url}&text=タイトル",class:"share-button-box",target:'_blank' do
--#                       %i.fab.fa-line.line-button
--#       #closeModalS.closeModal
--#         &#10005;
-
--# .contents.row
--#   .content_post{:style => "background-image: url(#{@post.image});"}
--#     - if user_signed_in? && current_user.id == @post.user_id
--#       .more
--#         %span= image_tag 'arrow_top.png'
--#         %ul.more_list
--#           %li
--#             = link_to '編集', "/posts/#{@post.id}/edit", method: :get
--#           %li
--#             = link_to '削除', "/posts/#{@post.id}", method: :delete
--#     = simple_format(@post.text)
--#     %span.name
--#       %a{:href => "/users/#{@post.user.id}"}
--#         %span 投稿者
--#         = @post.user.nickname
--#   .container
--#     / ここからフォーム
--#     - if current_user
--#       = form_tag("/posts/#{@post.id}/comments", method: :post) do
--#         %textarea{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
--#         %input{:type => "submit", :value => "SENT"}/
--#     .comments
--#       %h4 ＜コメント一覧＞
--#       - if @comments
--#         - @comments.each do |comment|
--#           %p
--#             %strong
--#               = link_to comment.user.nickname, "/users/#{comment.user_id}"
--#               ：
--#             = comment.text
+  .contents.show-row
+    .show-title
+      %h2.show-title-post 
+        #{@post.text[0]} 
+      %h3.show-title-user 
+        by #{link_to @post.user.name}
+    .show-box
+      .show-slide
+        = render partial: "showPost", locals: { post: @post }
+      .comment
+        .comment-count
+          総コメント数：#{@post.comments.count}
+        .comment__list
+          - @comments.each do |comment|
+            .comment__list__user
+              = link_to "/users/#{comment.user_id}",class:"comment__list__user-image" do
+                = image_tag comment.user.avatar.to_s
+              ：
+              .comment__list__user-text
+                =comment.text
+                
+    = form_with url:"/posts/#{@post.id}/comments",method: :post,id:"new_comment",class:"comment-form" do |f|
+      = f.text_field :text,cols:"30", placeholder:"読者アンケートにご協力ください！", rows:"2",class:"comment-form-text",id:"comment-form#{@post.id}",data: {target: "comment-form#{@post.id}"}
+      = f.button :submit,class:"submit-button state-0 comment-form-button",data: {target: "comment-button#{@post.id}"},id:"comment-button#{@post.id}" do
+        %span.pre-state-msg 感想を送る
+        %span.current-state-msg.hidden 送っています...
+        %span.done-state-msg.hidden 投稿しました！      
+    .title-link
+      =link_to "back",root_path
