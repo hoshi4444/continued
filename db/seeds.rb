@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name:"test",email:"test@test",password:"testtest")
+User.create!(name: "test", email: "test@test", password: "testtest")
 
 randomPost = [
   "どうしてこうなった",
@@ -28,11 +28,10 @@ randomPost = [
   "Awesome!!",
   "Uryyyyy!!",
   "Cheers!!",
-  "Sounds Good!!",
+  "Sounds Good!!"
 ]
 
-
-20.times do |no|
-  Post.create!(text:["#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}"],user_id:"1",image:[open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"),open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"),open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"),open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"),open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png")])
-  Post.create!(text:["#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}","#{randomPost[rand(1..20)]}"],user_id:"1",image:[open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"),open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"),open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"),open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"),open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg")])
+20.times do |_no|
+  Post.create!(text: [(randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s], user_id: "1", image: [open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"), open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"), open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"), open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png"), open("#{Rails.root}/db/fixtures/img#{rand(1..4)}.png")])
+  Post.create!(text: [(randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s, (randomPost[rand(1..20)]).to_s], user_id: "1", image: [open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"), open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"), open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"), open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg"), open("#{Rails.root}/db/fixtures/jimg#{rand(1..10)}.jpeg")])
 end

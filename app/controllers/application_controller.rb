@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery with: :exception
   # before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -9,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def check_admin
-    if(params[:controller]=="devise/registrations" && params[:action]=="new")
+    if params[:controller] == "devise/registrations" && params[:action] == "new"
     end
   end
 

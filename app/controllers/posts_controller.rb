@@ -1,9 +1,8 @@
-class PostsController < ApplicationController 
-  before_action :move_to_index, except: :index 
+class PostsController < ApplicationController
+  before_action :move_to_index, except: :index
 
   def index
     @posts = Post.includes(:user).order('created_at DESC').page(params[:page]).per(15)
-    
   end
 
   def new
@@ -36,11 +35,10 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit({text: []},{image: []},:link).merge(user_id: current_user.id)
+    params.require(:post).permit({ text: [] }, { image: [] }, :link).merge(user_id: current_user.id)
   end
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
-
 end

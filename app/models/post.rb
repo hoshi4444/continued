@@ -4,5 +4,4 @@ class Post < ApplicationRecord
   has_many :comments
 
   mount_uploaders :image, ImageUploader
-
 end

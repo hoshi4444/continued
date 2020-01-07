@@ -4,7 +4,7 @@
       %h2.show-title-post 
         #{@post.text[0]} 
       %h3.show-title-user 
-        by #{link_to @post.user.name}
+        by #{link_to @post.user.name,user_path(@post.user.id)}
     .show-box
       .show-slide
         = render partial: "showPost", locals: { post: @post }

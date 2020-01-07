@@ -46,7 +46,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name avatar])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -54,7 +54,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   # end
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :avatar, :avatar_cache, :remove_avatar])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name avatar avatar_cache remove_avatar])
   end
 
   # The path used after sign up.
@@ -66,6 +66,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
-  
 end
