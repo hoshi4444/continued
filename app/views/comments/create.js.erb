@@ -1,0 +1,4 @@
+$("#comments").html("<%= escape_javascript(render partial:"comments/comment", collection: @comments) %>");
+$('form').find(':submit').removeAttr("disabled");
+$('form').find("textarea, :text, select").val("").end().find(":checked").prop("checked", false);
+$(".comment-count").html("<%= escape_javascript(render partial:"comments/count", post: @post) %>")

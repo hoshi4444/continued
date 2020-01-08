@@ -1,0 +1,8 @@
+-# .comment-count
+-#   comments：#{post.comments_count}
+.comment__list__user
+  = link_to "/users/#{comment.user_id}",class:"comment__list__user-image" do
+    = image_tag comment.user.avatar.to_s
+  ：
+  .comment__list__user-text
+    =comment.text

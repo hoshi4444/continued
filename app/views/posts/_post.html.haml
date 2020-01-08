@@ -49,6 +49,13 @@
                   %li
                     =link_to "http://line.me/R/msg/text/?#{request.url}&text=【#{post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
                       %i.fab.fa-line.line-button
+            .show-icon
+              .show-icon-like
+                %i.fas.fa-heart
+                #{post.likes_count}
+              .show-iconcomment
+                %i.fas.fa-comments
+                #{post.comments_count}
             .show-next
               =link_to "感想を送る",post_path(post),class:"show-link"
       #closeModalS.closeModalS

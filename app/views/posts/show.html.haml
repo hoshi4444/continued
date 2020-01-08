@@ -9,22 +9,33 @@
       .show-slide
         = render partial: "showPost", locals: { post: @post }
       .comment
-        .comment-count
-          総コメント数：#{@post.comments.count}
+        .comment-nav
+          .comment-count
+            =render partial: "comments/count", locals: {post: @post}
+          .good-button{id:"good-button#{@post.id}",data: {good:{button:{id:"#{@post.id}"}}}}
+            = render partial: "likes/like", locals: {post: @post}
         .comment__list
-          - @comments.each do |comment|
-            .comment__list__user
-              = link_to "/users/#{comment.user_id}",class:"comment__list__user-image" do
-                = image_tag comment.user.avatar.to_s
-              ：
-              .comment__list__user-text
-                =comment.text
+          #comments
+            =render partial: "comments/comment", collection: @comments
                 
-    = form_with url:"/posts/#{@post.id}/comments",method: :post,id:"new_comment",class:"comment-form" do |f|
-      = f.text_field :text,cols:"30", placeholder:"読者アンケートにご協力ください！", rows:"2",class:"comment-form-text",id:"comment-form#{@post.id}",data: {target: "comment-form#{@post.id}"}
+    = form_with url:"/posts/#{@post.id}/comments",method: :post,id:"new_comment",class:"comment-form",remote: :ture do |f|
+      = f.text_field :text,cols:"30", placeholder:"text", rows:"2",class:"comment-form-text",id:"comment-form#{@post.id}",data: {target: "comment-form#{@post.id}"}
       = f.button :submit,class:"submit-button state-0 comment-form-button",data: {target: "comment-button#{@post.id}"},id:"comment-button#{@post.id}" do
         %span.pre-state-msg 感想を送る
         %span.current-state-msg.hidden 送っています...
         %span.done-state-msg.hidden 投稿しました！      
+    .edit-user__share
+      %ul.share-button
+        %li
+          %p share!!
+        %li
+          =link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=【#{@post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
+            %i.fab.fa-facebook.fb-button
+        %li
+          =link_to "https://twitter.com/share?url=#{request.url}&text=【#{@post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
+            %i.fab.fa-twitter.twi-button
+        %li
+          =link_to "http://line.me/R/msg/text/?#{request.url}&text=【#{@post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
+            %i.fab.fa-line.line-button
     .title-link
       =link_to "back",root_path

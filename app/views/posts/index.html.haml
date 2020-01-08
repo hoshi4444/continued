@@ -12,7 +12,12 @@
             .balloon-left.js-marker
               = simple_format(post.text[0])
             .balloon-rigth.js-marker
-              = simple_format(post.text[0])
+              .balloon-like{id:"good-button#{post.id}",data: {good:{button:{id:"#{post.id}"}}}}
+                = render partial: "likes/like", locals: {post: post}
+              .balloon-comment
+                %i.fas.fa-comments
+                #{post.comments_count}
+              -# = simple_format(post.text[0])
       .modalArea{id:"thumb#{post.id}"}
         #modalBg.modalBg
         .modalWrapper
