@@ -9,12 +9,21 @@ twitter等で人気のto be continuedのgifを画像とテキストで自作し�
  
 # Features
 
-画像とテキストを絡めて複数同時投稿できるアプリってあまり無いと思い、
-作成当時twitterで、これまでの１０年間の出来事を箇条書きするハッシュタグが流行っていたので、
-to be continuedのgifと合わせて見たら面白そうと思い作成しました。
+【制作背景】
+画像とテキストを絡めて複数同時投稿できるアプリがあまり無いと思い作成しました。
+また、作成当時twitterで「これまでの１０年間の出来事を箇条書きするハッシュタグ」が流行っていたので、 to be continuedのgifと合わせて見られるようになると面白いと思い作成しました。
 
-紙芝居形式で対象をぼかしながら説明しつつ、最後のリンクで対象の特定のアカウントに飛ばすことで、対象の意外な一面や経歴を知る、
-という遊び方を想定して作りました。
+【工夫したところ】
+利用者の以外な一面や経歴を知ることができるような工夫を行いました。
+具体的には、紙芝居形式で対象をぼかしながら説明しつつ、最後のリンクで対象の特定のアカウントに飛ばすことで、対象の意外な一面や経歴を知ることができるようにしています。
+
+# DB
+postgress
+[![Image from Gyazo](https://i.gyazo.com/109d0903f83d53b5b99ed757f2c90fab.png)](https://gyazo.com/109d0903f83d53b5b99ed757f2c90fab)
+
+# Dependency
+ruby 2.5.1
+rails 5.2.4
 
 # Usage
 
@@ -22,6 +31,7 @@ to be continuedのgifと合わせて見たら面白そうと思い作成しま�
 git clone https://github.com/hoshi4444/continued.git
 cd continued
 ```
- 
+
 # Author
 [hoshi4444](https://github.com/hoshi4444)
+
