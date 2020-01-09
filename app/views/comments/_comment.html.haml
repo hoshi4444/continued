@@ -2,7 +2,10 @@
 -#   comments：#{post.comments_count}
 .comment__list__user
   = link_to "/users/#{comment.user_id}",class:"comment__list__user-image" do
-    = image_tag comment.user.avatar.to_s
+    - if comment.user.avatar?
+      = image_tag comment.user.avatar.to_s,alt:"ユーザーアイコン"
+    - else
+      = image_tag 'menber.png',alt:"ユーザーアイコン"
   ：
   .comment__list__user-text
     =comment.text

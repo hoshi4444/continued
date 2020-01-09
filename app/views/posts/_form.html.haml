@@ -1,28 +1,38 @@
 .container.contents
   = form_for(post) do |f|
-    %h2
+    %h2.form-title
       continue
     %p.top-exp
       続きが気になる話を,画像を添えて聴かせてください
     %h3
       thunmbnail
-    = f.file_field :image,multiple: true,placeholder: "Image Url"
+    .post_img_prevs
+      %img#img_prev1.hidden{src:"#"}
+    = f.file_field :image,multiple: true,placeholder: "Image Url",id: "post_img1"
     = f.text_area :text,multiple: true,cols: "30",placeholder: "サムネイルとタイトルを選んでください",rows: "3"
     %h3
       exposition
-    = f.file_field :image,multiple: true,placeholder: "Image Url"
+    .post_img_prevs
+      %img#img_prev2.hidden{src:"#"}
+    = f.file_field :image,multiple: true,placeholder: "Image Url",id: "post_img2"
     = f.text_area :text,multiple: true,cols: "30",placeholder: "話の始まりを聴かせてください",rows: "3"
     %h3
       rising action
-    = f.file_field :image,multiple: true,placeholder: "Image Url"
+    .post_img_prevs
+      %img#img_prev3.hidden{src:"#"}
+    = f.file_field :image,multiple: true,placeholder: "Image Url",id: "post_img3"
     = f.text_area :text,multiple: true,cols: "30",placeholder: "それからどうなっていくんでしょうか",rows: "3"
     %h3
       climax
-    = f.file_field :image,multiple: true,placeholder: "Image Url"
+    .post_img_prevs
+      %img#img_prev4.hidden{src:"#"}
+    = f.file_field :image,multiple: true,placeholder: "Image Url",id: "post_img4"
     = f.text_area :text,multiple: true,cols: "30",placeholder: "急展開です",rows: "3"
     %h3
       falling action
-    = f.file_field :image,multiple: true,placeholder: "Image Url"
+    .post_img_prevs
+      %img#img_prev5.hidden{src:"#"}
+    = f.file_field :image,multiple: true,placeholder: "Image Url",id: "post_img5"
     = f.text_area :text,multiple: true,cols: "30",placeholder: "もう目が離せません",rows: "3"
     %p.exp
     %h3
