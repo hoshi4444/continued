@@ -22,9 +22,12 @@ url https://to-be-continued.herokuapp.com/
 - S3
 
 ### testアカウント
-- name:test
-- address:test@test
-- pass:testtest
+- name
+  -- test
+- address
+  -- test@test
+- pass
+  -- testtest
 
 ## DB
 postgress
