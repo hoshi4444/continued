@@ -34,9 +34,9 @@ postgress
 [![Image from Gyazo](https://i.gyazo.com/109d0903f83d53b5b99ed757f2c90fab.png)](https://gyazo.com/109d0903f83d53b5b99ed757f2c90fab)
 
 ## Dependency
-ruby 2.5.1
-rails 5.2.4
-jQuery 3.4.1
+- ruby 2.5.1
+- rails 5.2.4
+- jQuery 3.4.1
 
 ## Usage
 
