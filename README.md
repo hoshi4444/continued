@@ -15,16 +15,16 @@ twitter等で人気のto be continuedのgifを画像とテキストで自作し�
 具体的には、紙芝居形式で対象をぼかしながら説明しつつ、最後のリンクで対象の特定のアカウントに飛ばすことで、対象の意外な一面や経歴を知ることができるようにしています。
 
 ### 本番環境
-heroku
-postgress
-S3
+- heroku
+- postgress
+- S3
 
 url https://to-be-continued.herokuapp.com/
 
 ### testアカウント
-name:test
-address:test@test
-pass:testtest
+- name:test
+- address:test@test
+- pass:testtest
 
 ## DB
 postgress
