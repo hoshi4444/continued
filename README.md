@@ -23,11 +23,14 @@ url https://to-be-continued.herokuapp.com/
 
 ### testアカウント
 - name
-  test
+
+test
 - address
-  test@test
+
+test@test
 - pass
-  testtest
+
+testtest
 
 ## DB
 postgress
