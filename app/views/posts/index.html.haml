@@ -17,7 +17,6 @@
               .balloon-comment
                 %i.fas.fa-comments
                 #{post.comments_count}
-              -# = simple_format(post.text[0])
       .modalArea{id:"thumb#{post.id}"}
         #modalBg.modalBg
         .modalWrapper
@@ -27,7 +26,6 @@
         &#10005;
   = paginate @posts
   .page-load-status
-    -# %p.infinite-scroll-request Loading...
     =image_tag src="zawazawa.gif",class:"infinite-scroll-request",alt:"効果音",loding:"lazy"
     %p.infinite-scroll-last 先生の次回作にご期待ください！
     %p.infinite-scroll-error 読み込めませんでした

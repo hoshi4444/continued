@@ -1,21 +1,19 @@
 .slick-box
-  .title-post.content_post{style:"background-image: url(#{post.image[0]});",loding:"lazy",alt:"投稿画像"}
+  .title-post.content_post{style:"background-image: url(#{post.image[0]});",loading:"lazy",alt:"投稿画像"}
     = simple_format(post.text[0])
-  .first-post.content_post{style:"background-image: url(#{post.image[1]});",loding:"lazy",alt:"投稿画像"}
+  .first-post.content_post{style:"background-image: url(#{post.image[1]});",loading:"lazy",alt:"投稿画像"}
     = simple_format(post.text[1])
-  .second-post.content_post{style:"background-image: url(#{post.image[2]});",loding:"lazy",alt:"投稿画像"}
+  .second-post.content_post{style:"background-image: url(#{post.image[2]});",loading:"lazy",alt:"投稿画像"}
     = simple_format(post.text[2])
-  .third-post.content_post{style:"background-image: url(#{post.image[3]});",loding:"lazy",alt:"投稿画像"}
+  .third-post.content_post{style:"background-image: url(#{post.image[3]});",loading:"lazy",alt:"投稿画像"}
     = simple_format(post.text[3])
-  .fourth-post.content_post{style:"background-image: url(#{post.image[4]});",loding:"lazy",alt:"投稿画像"}
+  .fourth-post.content_post{style:"background-image: url(#{post.image[4]});",loading:"lazy",alt:"投稿画像"}
     = simple_format(post.text[4])
-  .last-post.content_post{style:"background-image: url(#{post.image[4]});",loding:"lazy",alt:"投稿画像"}
+  .last-post.content_post{style:"background-image: url(#{post.image[4]});",loading:"lazy",alt:"投稿画像"}
     = simple_format(post.text[4])
     .more{data: {target: "edit-user#{post.id}"}}
-      = image_tag 'more.png'
+      = image_tag 'more.png',alt:"ナビゲーション"
       -# %ul.more_list
-        %li
-          = link_to '詳細', "/posts/#{post.id}", method: :get
         - if user_signed_in? && current_user.id == post.user_id
           %li
             = link_to '編集', "/posts/#{post.id}/edit", method: :get
@@ -38,27 +36,15 @@
                     = image_tag post.user.avatar.to_s,alt:"ユーザーアイコン"
                   - else
                     = image_tag 'menber.png',alt:"ユーザーアイコン"
-              -# .edit-user__share
-                %ul.share-button
-                  %li
-                    =link_to "https://www.facebook.com/sharer/sharer.php?u=#{request.url}&text=【#{post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
-                      %i.fab.fa-facebook.fb-button
-                  %li
-                    =link_to "https://twitter.com/share?url=#{request.url}&text=【#{post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
-                      %i.fab.fa-twitter.twi-button
-                  %li
-                    =link_to "http://line.me/R/msg/text/?#{request.url}&text=【#{post.text[0]}】To be continued... ",class:"share-button-box",target:'_blank' do
-                      %i.fab.fa-line.line-button
-            .show-icon
-              .show-icon-like
-                %i.fas.fa-heart
-                #{post.likes_count}
-              .show-iconcomment
-                %i.fas.fa-comments
-                #{post.comments_count}
-            .show-next
-              =link_to "感想を送る",post_path(post),class:"show-link"
+            - unless request.path.include?("posts")
+              .show-icon
+                .show-icon-like
+                  %i.fas.fa-heart
+                  #{post.likes_count}
+                .show-iconcomment
+                  %i.fas.fa-comments
+                  #{post.comments_count}
+              .show-next
+                =link_to "感想を送る",post_path(post),class:"show-link"
       #closeModalS.closeModalS
-        = image_tag 'more.png'
-    -# #closeModalS.closeModalS
-    -#   &#10005;
+        = image_tag 'more.png',alt:"ナビゲーション"

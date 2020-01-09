@@ -65,6 +65,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'carrierwave'
 gem 'compass-rails', github: 'Compass/compass-rails'
+gem 'counter_culture', '~> 1.8'
 gem 'devise'
 gem 'devise'
 gem 'fog-aws'
@@ -74,4 +75,3 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'mini_magick'
 gem 'nokogiri', '~> 1.10.5'
-gem 'counter_culture', '~> 1.8'

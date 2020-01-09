@@ -7,7 +7,7 @@
         by #{link_to @post.user.name,user_path(@post.user.id)}
     .show-box
       .show-slide
-        = render partial: "showPost", locals: { post: @post }
+        = render partial: "post", locals: { post: @post }
       .comment
         .comment-nav
           .comment-count
@@ -16,8 +16,7 @@
             = render partial: "likes/like", locals: {post: @post}
         .comment__list
           #comments
-            =render partial: "comments/comment", collection: @comments
-                
+            =render partial: "comments/comment", collection: @comments                
     = form_with url:"/posts/#{@post.id}/comments",method: :post,id:"new_comment",class:"comment-form",remote: :ture do |f|
       = f.text_field :text,cols:"30", placeholder:"text", rows:"2",class:"comment-form-text",id:"comment-form#{@post.id}",data: {target: "comment-form#{@post.id}"}
       = f.button :submit,class:"submit-button state-0 comment-form-button",data: {target: "comment-button#{@post.id}"},id:"comment-button#{@post.id}" do
